@@ -5,7 +5,8 @@
 
 <mapper namespace="soung.Uk.mapper.boardMapper">
     <insert id="insertBoard" parameterType="soung.Uk.vo.BoardCreateDto">
-        insert into board () value ({})
+        insert into board (title,content,writer,hits,deleteYn)
+        value ({title},{content},{writer},{hits},{deleteYn})
 
     </insert>
 

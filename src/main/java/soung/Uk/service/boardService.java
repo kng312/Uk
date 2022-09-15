@@ -3,6 +3,9 @@ package soung.Uk.service;
 import org.springframework.stereotype.Service;
 import soung.Uk.mapper.boardMapper;
 import soung.Uk.vo.BoardCreateDto;
+import soung.Uk.vo.BoardDto;
+
+import java.util.List;
 
 @Service
 public class boardService {
@@ -15,5 +18,9 @@ public class boardService {
 
     public void create(BoardCreateDto boardCreateDto) {
         boardMapper.insertBoard(boardCreateDto);
+    }
+
+    public List<BoardDto> getBoardList() {
+        return boardMapper.getBoardList();
     }
 }

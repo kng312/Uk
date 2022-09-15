@@ -10,7 +10,17 @@ public class BoardCreateDto {
     private String title; // 제목
     private String content; // 내용
     private String writer; // 작성자
-    private Integer hits; //조회수
-    private char deleteYn; // 삭제 여부
+    private String deleteYn; // 삭제 여부
+
+    @Builder
+    public BoardCreateDto(String title,
+                          String content,
+                          String writer,
+                          String deleteYn) {
+        this.title = title;
+        this.content = content;
+        this.writer = writer;
+        this.deleteYn = "N";
+    }
 
 }

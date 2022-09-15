@@ -5,9 +5,13 @@
 
 <mapper namespace="soung.Uk.mapper.boardMapper">
     <insert id="insertBoard" parameterType="soung.Uk.vo.BoardCreateDto">
-        insert into board (title,content,writer,hits,deleteYn)
-        value ({title},{content},{writer},{hits},{deleteYn})
-
+        insert into board (title,content,writer,deleteYn)
+        value ({title},{content},{writer},{deleteYn})
     </insert>
+
+    <select id="getBoardList" resultType="soung.Uk.vo.BoardDto">
+        select * from board
+        where delete_yn = "N"
+    </select>
 
 </mapper>

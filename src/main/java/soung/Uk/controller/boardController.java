@@ -2,14 +2,15 @@ package soung.Uk.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import soung.Uk.service.boardService;
 import soung.Uk.vo.BoardCreateDto;
+import soung.Uk.vo.BoardDto;
+
+import java.util.List;
 
 @Controller
-@RequestMapping("/board")
+@RequestMapping("/boards")
 public class boardController {
 
     private final boardService boardService;
@@ -19,11 +20,27 @@ public class boardController {
         this.boardService = boardService;
     }
 
-    @PostMapping("/create")
+    @GetMapping("/write")
+    public String write() {
+        return "board/write";
+    }
+    @PostMapping("/write")
     public String createBoard(@ModelAttribute BoardCreateDto boardCreateDto) {
         boardService.create(boardCreateDto);
-        return "/boardList";
+        return "redirect:/board/List";
+    }
 
+    @GetMapping("/list")
+    public String getBoardList(Model model) {
+        List<BoardDto> boardList = boardService.getBoardList();
+        model.addAttribute("boardList", boardList);
+        return "board/list";
+    }
+
+    @GetMapping("/list/${id}")
+    public String getBoardDetail() {
+
+        return "redirect:/board/List";
     }
 
 

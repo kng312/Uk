@@ -11,4 +11,6 @@ public interface boardMapper {
     void insertBoard(BoardCreateDto boardCreateDto);
 
     List<BoardDto> getBoardList();
+
+    BoardDto getBoardDetail(Long id);
 }

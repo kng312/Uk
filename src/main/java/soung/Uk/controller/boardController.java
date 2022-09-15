@@ -37,10 +37,11 @@ public class boardController {
         return "board/list";
     }
 
-    @GetMapping("/list/${id}")
-    public String getBoardDetail() {
-
-        return "redirect:/board/List";
+    @GetMapping("/list/{id}")
+    public String getBoardDetail(Model model, @PathVariable Long id) {
+        BoardDto boardDto = boardService.getBoardDetail(id);
+        model.addAttribute("boardDetail", boardDto);
+        return "/board/list";
     }
 
 

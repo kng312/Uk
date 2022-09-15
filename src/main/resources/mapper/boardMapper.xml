@@ -14,4 +14,9 @@
         where delete_yn = "N"
     </select>
 
+    <select id="getBoardDetail" resultType="soung.Uk.vo.BoardDto" parameterType="Long">
+        select * from board
+        where id = #{id}
+    </select>
+
 </mapper>

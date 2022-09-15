@@ -23,4 +23,8 @@ public class boardService {
     public List<BoardDto> getBoardList() {
         return boardMapper.getBoardList();
     }
+
+    public BoardDto getBoardDetail(Long id) {
+        return boardMapper.getBoardDetail(id);
+    }
 }

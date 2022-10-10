@@ -22,26 +22,27 @@ public class boardController {
 
     @GetMapping("/write")
     public String write() {
-        return "board/write";
+        return "boards/write";
     }
-    @PostMapping("/write")
-    public String createBoard(@ModelAttribute BoardCreateDto boardCreateDto) {
+
+    @PostMapping("/post/write")
+    public String createBoard(@RequestBody BoardCreateDto boardCreateDto) {
         boardService.create(boardCreateDto);
-        return "redirect:/board/List";
+        return "redirect:/boards/list";
     }
 
     @GetMapping("/list")
     public String getBoardList(Model model) {
         List<BoardDto> boardList = boardService.getBoardList();
         model.addAttribute("boardList", boardList);
-        return "board/list";
+        return "boards/list";
     }
 
     @GetMapping("/list/{id}")
     public String getBoardDetail(Model model, @PathVariable Long id) {
         BoardDto boardDto = boardService.getBoardDetail(id);
         model.addAttribute("boardDetail", boardDto);
-        return "/board/list";
+        return "/boards/list";
     }
 
 

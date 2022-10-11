@@ -42,7 +42,7 @@ public class boardController {
     public String getBoardDetail(Model model, @PathVariable Long id) {
         BoardDto boardDto = boardService.getBoardDetail(id);
         model.addAttribute("boardDetail", boardDto);
-        return "/boards/list";
+        return "/boards/view";
     }
 
 

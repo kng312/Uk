@@ -5,17 +5,37 @@
 
 <mapper namespace="soung.Uk.mapper.boardMapper">
     <insert id="insertBoard" parameterType="soung.Uk.vo.BoardCreateDto">
-        insert into board (title,content,writer,delete_yn) values (#{title},#{content},#{writer},#{deleteYn})
+        insert into board (title,content,writer,hits,delete_yn,created_date) values (#{title},#{content},#{writer},0,#{deleteYn},now())
     </insert>
 
     <select id="getBoardList" resultType="soung.Uk.vo.BoardDto">
         select * from board
         where delete_yn = "N"
+        order by id desc
     </select>
 
     <select id="getBoardDetail" resultType="soung.Uk.vo.BoardDto" parameterType="Long">
         select * from board
         where id = #{id}
     </select>
+
+    <update id="viewCount" parameterType="Long">
+        update board set hits = hits + 1
+        where id = #{id}
+    </update>
+
+    <update id="updateBoard" parameterType="soung.Uk.vo.BoardDto">
+        update board set
+        title = #{title},
+        content = #{content},
+        writer = #{writer},
+        modified_date = now()
+        where id = #{id}
+    </update>
+
+    <update id="deleteBoard" parameterType="Long">
+        update board set delete_yn = 'Y'
+        where id = #{id}
+    </update>
 
 </mapper>

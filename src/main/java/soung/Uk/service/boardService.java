@@ -25,6 +25,15 @@ public class boardService {
     }
 
     public BoardDto getBoardDetail(Long id) {
+        boardMapper.viewCount(id);
         return boardMapper.getBoardDetail(id);
+    }
+
+    public void updateBoard(BoardDto boardDto) {
+        boardMapper.updateBoard(boardDto);
+    }
+
+    public void deleteBoard(Long id) {
+        boardMapper.deleteBoard(id);
     }
 }

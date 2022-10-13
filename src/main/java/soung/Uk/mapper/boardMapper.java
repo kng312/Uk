@@ -13,4 +13,10 @@ public interface boardMapper {
     List<BoardDto> getBoardList();
 
     BoardDto getBoardDetail(Long id);
+
+    void viewCount(Long id);
+
+    void updateBoard(BoardDto boardDto);
+
+    void deleteBoard(Long id);
 }

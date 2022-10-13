@@ -18,6 +18,16 @@
 
             <!--/* 게시글 리스트 Rendering 영역 */-->
             <tbody id="list">
+                <tr th:each="board : ${boardList}">
+                    <td th:text="${board.id}"></td>
+                    <td>
+                        <a th:href="'/boards/list/'+${board.id}" th:text="${board.title}"></a>
+                    </td>
+                    <td th:text="${board.writer}"></td>
+                    <td th:text="${board.createdDate}"></td>
+                    <td th:text="${board.hits}"></td>
+                </tr>
+            </tbody>
 
         </table>
         <div class="btn_wrap text-right">
@@ -33,57 +43,7 @@
 
 
 <th:block layout:fragment="script">
-    <script th:inline="javascript">
-        	/*<![CDATA[*/
-		/**
-		 * 페이지 로딩 시점에 실행되는 함수
-		 */
-		window.onload = () => {
-
-			findAll();
-		}
-
-		/**
-		 * 게시글 리스트 조회
-		 */
-		function findAll() {
-
-			fetch('/boards/list').then(response => {
-				if (response.ok) {
-		 		    return response.json();
-				}
-			}).then(json => {
-				let html = '';
-
-				if (!json.length) {
-					html = '<td colspan="5">등록된 게시글이 없습니다.</td>';
-				} else {
-					json.forEach((obj, idx) => {
-						html += `
-							<tr>
-		  						<td>${json.length - idx}</td>
-		  						<td class="text-left">
-		  							<a href="javascript: void(0);" onclick="goView(${obj.id})">${obj.title}</a>
-		  						</td>
-		  						<td>${obj.writer}</td>
-		  						<td>${moment(obj.createdDate).format('YYYY-MM-DD HH:mm:ss')}</td>
-		  						<td>${obj.hits}</td>
-							</tr>
-						`;
-					});
-				}
-
-				document.getElementById('list').innerHTML = html;
-			});
-		}
-
-		/**
-		 * 게시글 조회
-		 */
-		function goView(id) {
-			location.href = `/boards/view/${id}`;
-		}
-	/*]]>*/
+    <script type="text/javascript" th:inline="javascript">
 
     </script>
 </th:block>

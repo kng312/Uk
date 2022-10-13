@@ -1,10 +1,12 @@
 package soung.Uk.vo;
 
 import lombok.Getter;
+import lombok.Setter;
 
 import java.time.LocalDateTime;
 
 @Getter
+@Setter
 public class BoardDto {
 
         private Long id; // PK

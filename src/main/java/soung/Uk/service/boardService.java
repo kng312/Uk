@@ -20,7 +20,7 @@ public class boardService {
     public void create(BoardCreateDto boardCreateDto) {
         boardMapper.insertBoard(boardCreateDto);
     }
-    //깃 작업 한번 해보자
+    //깃 작업 한번 해보자 머지를 추가해보자
     public List<BoardDto> getBoardList() {
         List<BoardDto> board = boardMapper.getBoardList();
         return board;

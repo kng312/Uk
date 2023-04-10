@@ -40,7 +40,7 @@ public class boardController {
         return "/boards/list";
     }
     //깃 작업 한번 해보자
-
+//깃 작업 한번 해보자 머지를 추가해보자
     @GetMapping("/list/{id}")
     public String getBoardDetail(Model model, @PathVariable Long id) {
         BoardDto boardDto = boardService.getBoardDetail(id);

@@ -23,6 +23,7 @@
             *
         from board
         where delete_yn = "N"
+        order by id desc
     </select>
 
     <select id="getBoardDetail" resultType="soung.Uk.vo.BoardDto" parameterType="Long">
@@ -52,5 +53,24 @@
         from board
         where id = #{id}
     </select>
+
+    <update id="viewCount" parameterType="Long">
+        update board set hits = hits + 1
+        where id = #{id}
+    </update>
+
+    <update id="updateBoard" parameterType="soung.Uk.vo.BoardDto">
+        update board set
+        title = #{title},
+        content = #{content},
+        writer = #{writer},
+        modified_date = now()
+        where id = #{id}
+    </update>
+
+    <update id="deleteBoard" parameterType="Long">
+        update board set delete_yn = 'Y'
+        where id = #{id}
+    </update>
 
 </mapper>

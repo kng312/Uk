@@ -28,7 +28,7 @@ public class boardController {
     }
 
     @PostMapping("/post/write")
-    public String createBoard(@RequestBody BoardCreateDto boardCreateDto) {
+    public String createBoard(BoardCreateDto boardCreateDto) {
         boardService.create(boardCreateDto);
         return "redirect:/boards/list";
     }
@@ -44,7 +44,26 @@ public class boardController {
     public String getBoardDetail(Model model, @PathVariable Long id) {
         BoardDto boardDto = boardService.getBoardDetail(id);
         model.addAttribute("boardDetail", boardDto);
-        return "/boards/view";
+        return "boards/view";
+    }
+
+    @GetMapping("/update/{id}")
+    public String getUpdateBoard(Model model, @PathVariable Long id) {
+        BoardDto boardDto = boardService.getBoardDetail(id);
+        model.addAttribute("boardUpdate", boardDto);
+        return "boards/update";
+    }
+
+    @PostMapping("/update/{id}")
+    public String updateBoard(BoardDto boardDto) {
+        boardService.updateBoard(boardDto);
+        return "redirect:/boards/list";
+    }
+
+    @PostMapping("/delete/{id}")
+    public String deleteBoard(@PathVariable Long id) {
+        boardService.deleteBoard(id);
+        return "redirect:/boards/list";
     }
 
     @PostMapping("/delete/{id}")

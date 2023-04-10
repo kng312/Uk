@@ -27,6 +27,7 @@ public class boardService {
     }
 
     public BoardDto getBoardDetail(Long id) {
+        boardMapper.viewCount(id);
         return boardMapper.getBoardDetail(id);
     }
 

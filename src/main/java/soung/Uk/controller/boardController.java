@@ -54,17 +54,6 @@ public class boardController {
         return "boards/update";
     }
 
-    @PostMapping("/update/{id}")
-    public String updateBoard(BoardDto boardDto) {
-        boardService.updateBoard(boardDto);
-        return "redirect:/boards/list";
-    }
-
-    @PostMapping("/delete/{id}")
-    public String deleteBoard(@PathVariable Long id) {
-        boardService.deleteBoard(id);
-        return "redirect:/boards/list";
-    }
 
     @PostMapping("/delete/{id}")
     public String deleteBoard (@PathVariable Long id) {

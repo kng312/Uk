@@ -20,4 +20,6 @@ public interface boardMapper {
     void patchBoard(BoardPatchDto boardPatchDto);
 
     BoardPatchDto getBoardPatch(Long id);
+
+    void viewCount(Long id);
 }

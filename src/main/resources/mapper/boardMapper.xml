@@ -68,9 +68,5 @@
         where id = #{id}
     </update>
 
-    <update id="deleteBoard" parameterType="Long">
-        update board set delete_yn = 'Y'
-        where id = #{id}
-    </update>
 
 </mapper>

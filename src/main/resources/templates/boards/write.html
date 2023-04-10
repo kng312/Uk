@@ -62,8 +62,12 @@
 		   	}).then(json => {
 		   		const form = document.getElementById('form');
 		   		form.title.value = json.title;
+		   		console.log(id)
+		   		console.log(form.title.value)
 		   		form.content.value = json.content;
+		   		console.log(json.content)
 		   		form.writer.value = json.writer;
+		   		console.log(json.writer)
 
 		   	}).catch(error => {
 		    	alert('게시글 정보를 찾을 수 없습니다.');

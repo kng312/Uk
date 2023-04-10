@@ -4,6 +4,7 @@ import org.springframework.stereotype.Service;
 import soung.Uk.mapper.boardMapper;
 import soung.Uk.vo.BoardCreateDto;
 import soung.Uk.vo.BoardDto;
+import soung.Uk.vo.BoardPatchDto;
 
 import java.util.List;
 
@@ -21,10 +22,24 @@ public class boardService {
     }
 
     public List<BoardDto> getBoardList() {
-        return boardMapper.getBoardList();
+        List<BoardDto> board = boardMapper.getBoardList();
+        return board;
     }
 
     public BoardDto getBoardDetail(Long id) {
         return boardMapper.getBoardDetail(id);
+    }
+
+    public void deleteBoard(Long id) {
+        boardMapper.deleteBoard(id);
+    }
+
+    public void patchBoard(BoardPatchDto boardPatchDto) {
+        boardMapper.patchBoard(boardPatchDto);
+    }
+
+    public BoardPatchDto getBoardPatch(Long id) {
+        return boardMapper.getBoardPatch(id);
+
     }
 }

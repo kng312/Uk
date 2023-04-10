@@ -5,16 +5,51 @@
 
 <mapper namespace="soung.Uk.mapper.boardMapper">
     <insert id="insertBoard" parameterType="soung.Uk.vo.BoardCreateDto">
-        insert into board (title,content,writer,delete_yn) values (#{title},#{content},#{writer},#{deleteYn})
+        insert into board
+            (title,
+            content,
+            writer,
+            delete_yn)
+        values
+            (#{title},
+            #{content},
+            #{writer},
+            #{deleteYn}
+            )
     </insert>
 
     <select id="getBoardList" resultType="soung.Uk.vo.BoardDto">
-        select * from board
+        select
+            *
+        from board
         where delete_yn = "N"
     </select>
 
     <select id="getBoardDetail" resultType="soung.Uk.vo.BoardDto" parameterType="Long">
-        select * from board
+        select
+            *
+        from board
+        where id = #{id}
+    </select>
+
+    <update id="deleteBoard" parameterType="Long">
+        update board set delete_yn = "Y" where id = #{id}
+    </update>
+
+    <update id="patchBoard" parameterType="soung.Uk.vo.BoardCreateDto">
+        update board set
+        (
+            title = #{title},
+            content = #{content},
+            writer = #{writer},
+            delete_yn = #{delete_yn}
+        )
+    </update>
+
+    <select id="getBoardPatch" resultType="soung.Uk.vo.BoardPatchDto" parameterType="Long">
+        select
+        *
+        from board
         where id = #{id}
     </select>
 

@@ -39,6 +39,7 @@ public class boardController {
         model.addAttribute("boardsList", boardList);
         return "/boards/list";
     }
+    //깃 작업 한번 해보자
 
     @GetMapping("/list/{id}")
     public String getBoardDetail(Model model, @PathVariable Long id) {
